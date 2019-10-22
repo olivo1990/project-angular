@@ -1,0 +1,27 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+
+  input{
+    padding: 3px;
+  }
+
+  .rellenar{
+      padding-right: 35px;
+  }
+
+  .columna {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Clear floats after the columns */
+  .fila:after {
+    display: table;
+    clear: both;
+  }

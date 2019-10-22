@@ -1,0 +1,99 @@
+
+<div class="container my-5 mx-auto">
+    <div class="row">
+        <!--<div class="col-md-12">-->
+            <mat-card class="p-0">
+                <div class="card-group">
+                    <div class="card border-0">
+                    <!--<div class="col-md-8">-->
+                    <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+                        <mdb-carousel-item> 
+                            <div class="view w-100">
+                            <img class="d-block w-100" src="../../assets/imgs/2971.jpg" alt="First slide">
+                            <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+                            </div>
+                            <div class="carousel-caption">
+                            <h3 class="h3-responsive">Light mask</h3>
+                            <p>First text</p>
+                            </div>
+                        </mdb-carousel-item>
+                        <mdb-carousel-item>
+                            <div class="view w-100">
+                            <img class="d-block w-100" src="../../assets/imgs/6535.jpg" alt="Second slide">
+                            <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+                            </div>
+                            <div class="carousel-caption">
+                            <h3 class="h3-responsive">Strong mask</h3>
+                            <p>Secondary text</p>
+                            </div>
+                        </mdb-carousel-item>
+                        <mdb-carousel-item>
+                            <div class="view w-100">
+                            <img class="d-block w-100" src="../../assets/imgs/42851.jpg" alt="Third slide">
+                            <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+                            </div>
+                            <div class="carousel-caption">
+                            <h3 class="h3-responsive">Slight mask</h3>
+                            <p>Third text</p>
+                            </div>
+                        </mdb-carousel-item>
+                        <mdb-carousel-item>
+                                <div class="view w-100">
+                                <img class="d-block w-100" src="../../assets/imgs/45455.jpg" alt="Third slide">
+                                <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+                                </div>
+                                <div class="carousel-caption">
+                                <h3 class="h3-responsive">Slight mask</h3>
+                                <p>Third text</p>
+                                </div>
+                            </mdb-carousel-item>
+                    </mdb-carousel>
+                </div>
+                <!--</div>-->
+                
+                <div class="card border-0">
+                    <div class="card-body">
+                        <div class="col-md-12">
+                        <h5 class="card-title text-center">{{ titulo }}</h5>
+                        <form method="post">
+
+                            <div class="example-container">
+                                <mat-form-field>
+                                    <mat-icon matPrefix class="rellenar">perm_identity</mat-icon>
+                                    <input [(ngModel)]="usuario.username" type="text" name="username" id="username" matInput placeholder="Username" required>
+                                    <mat-error *ngIf="validarUsuario">
+                                        {{ mensajeErrorUser }}
+                                    </mat-error>
+                                </mat-form-field>
+                                
+                            </div>
+
+                            <div class="example-container">
+                                <mat-form-field>
+                                    <mat-icon matPrefix class="rellenar">lock</mat-icon>
+                                    <input [(ngModel)]="usuario.password" [type]="hide ? 'password' : 'text'" name="password" id="password" matInput placeholder="Password" required>
+                                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="validarPassword">
+                                        {{ mensajeErrorPass }}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="text-right">
+                                <a [routerLink]="['/recover']" class="badge badge-light">¿Se te olvidó la contraseña?</a>
+                            </div>
+
+                            <div class="example-container my-3">
+                                <button mat-raised-button color="primary" (click)='login()' type="submit">Ingresar  <mat-icon matPrefix>arrow_right_alt</mat-icon></button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
