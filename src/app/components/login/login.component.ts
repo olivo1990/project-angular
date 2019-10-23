@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Usuario } from '../../models/usuario';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,29 +9,36 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   
-  titulo:string = "Login";
+  titulo:string = "Iniciar sesión";
   usuario:Usuario;
   validarUsuario:boolean = false;
   mensajeErrorUser:string;
   validarPassword:boolean = false;
   mensajeErrorPass:string;
   hide:boolean = true;
- 
-  isLeftVisible:boolean;
+  crearCuenta:boolean = false;
+  ocultarOverlay:boolean = false;
 
-  constructor(private router:Router) { 
+  constructor(private router:Router, private route:ActivatedRoute,) { 
     this.usuario = new Usuario();
+    //setTimeout(function(){ this.ocultarOverlay = true; }, 3000);
+
+    setTimeout(()=>{
+      this.ocultarOverlay = true;
+    }, 2000);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe( params =>{
+      if(params["over"] == 0){
+        this.ocultarOverlay = true;
+      }
+    });
+  }
 
   login():void{
 
-    console.log(this.usuario);
-    this.validarUsuario = false;
-    this.validarPassword = false;
-
-    if(this.usuario.username === "" || this.usuario.username === undefined){
+    if(this.usuario.correo === "" || this.usuario.correo === undefined){
       this.validarUsuario = true;
       this.mensajeErrorUser = "El username es obligatorio";
     }
