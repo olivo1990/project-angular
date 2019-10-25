@@ -45,3 +45,72 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 .fadeIn {
   animation-name: fadeIn;
 }
+
+.warning-snackbar {
+  background: #fff;
+  color: #000!important;
+  border: 2px solid #f44336;
+}
+
+.mat-simple-snackbar-action{
+  color: #000!important;
+}
+
+.color-light-link{
+  color: rgb(6, 123, 173)!important;
+  font-size: 14px;
+}
+
+.color-light-link:hover{
+  color: rgb(8, 167, 234)!important;
+}
+
+.color-light-link:active{
+  color: rgb(6, 123, 173)!important;
+}
+
+.position-icon{
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  top: 3px;
+}
+
+.color-dark{
+  color:#484848!important;
+}
+
+.color-light{
+  color: rgb(6, 123, 173)!important;
+}
+
+.max-width-card {
+  max-height: auto;
+  overflow-y: auto;
+}
+
+@media (max-width: 1199px) {
+  .max-width-card {
+    height: 573px;
+  }
+}
+
+@media (max-width: 991px) {
+  .max-width-card {
+    height: 429px;
+  }
+}
+
+@media (max-width: 767px) {
+  .max-width-card {
+    height: 322px;
+  }
+}
+
+.mat-errors{
+  color: #f44336;
+  font-size: 75%;
+  margin-top: 13px;
+  position: absolute;
+}
+  
