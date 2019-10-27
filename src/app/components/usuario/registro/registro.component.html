@@ -1,10 +1,10 @@
 <div class="container my-5 mx-auto">
     <div class="row">
-        <mat-card class="p-0">
+        <mat-card class="p-0 max-width-card-material">
 
             <div class="card-group">
-                    
-                <div class="card border-0">
+
+                <div class="card border-0 card-ocultar">
                     <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
                         <mdb-carousel-item>
                             <div class="view w-100">
@@ -54,7 +54,7 @@
                         <div class="col-md-10 offset-md-1 text-left">
                             <a [routerLink]="['/login/0']" class="color-light-link" (click)='crearCuenta=true'><mat-icon matPrefix class="position-icon">navigate_before</mat-icon>Iniciar sesión</a>
                         </div>
-                        <div class="col-md-10 mx-auto my-5"> 
+                        <div class="col-md-10 mx-auto my-5">
 
                             <h1 class="mat-h2 text-left color-dark">{{ titulo }}</h1>
                             <form method="post">
@@ -67,7 +67,7 @@
                                         </mat-error>
                                     </mat-form-field>
                                 </div>
-                                
+
                                 <div class="example-container">
                                     <mat-form-field class="example-full-width">
                                         <input [(ngModel)]="usuario.apellido" type="text" name="apellido" id="apellido" matInput placeholder="Apellido" required [formControl]="apellidoFormControl" [errorStateMatcher]="matcher">
@@ -91,22 +91,27 @@
 
                                 <div class="example-container">
                                     <mat-form-field>
-                                        <input [(ngModel)]="usuario.password" [type]="hide ? 'password' : 'text'" name="password" id="password" matInput placeholder="Password" required [formControl]="passwordFormControl" [errorStateMatcher]="matcher">
+                                        <input [(ngModel)]="usuario.password" [type]="hide ? 'password' : 'text'" name="password" id="password" matInput placeholder="Password" required [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
+                                        >
                                         <button mat-icon-button matSuffix class="color-dark" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                            <mat-icon matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> 
-                                        </button> 
+                                            <mat-icon matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
                                         <mat-error *ngIf="passwordFormControl.hasError('required')">
                                             El password es <strong>requerido</strong>
                                         </mat-error>
                                     </mat-form-field>
+
+                                    <!--<mat-list>
+                                      <mat-list-item *ngFor="let politicas of politicasPasswordModelo">{{ politicas.mensaje }}</mat-list-item>
+                                    </mat-list>-->
                                 </div>
 
                                 <div class="example-container">
                                     <mat-form-field>
                                         <input [(ngModel)]="verificarPasswordValue"  [type]="hideV ? 'password' : 'text'" matInput placeholder="Verificar password" required [formControl]="verificarPasswordFormControl" [errorStateMatcher]="matcher">
                                         <button mat-icon-button matSuffix class="color-dark" (click)="hideV = !hideV" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideV">
-                                            <mat-icon matSuffix>{{hideV ? 'visibility_off' : 'visibility'}}</mat-icon> 
-                                        </button> 
+                                            <mat-icon matSuffix>{{hideV ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
                                         <mat-error *ngIf="verificarPasswordFormControl.hasError('required')">
                                             Verificar password es <strong>requerido</strong>
                                         </mat-error>
@@ -115,7 +120,7 @@
                                         </div>
                                     </mat-form-field>
                                 </div>
-                    
+
                                 <div class="example-container my-3">
                                     <button mat-raised-button color="primary" (click)='registrar()' type="submit">Registrar</button>
                                 </div>
@@ -127,5 +132,3 @@
         </mat-card>
     </div>
 </div>
-    
-

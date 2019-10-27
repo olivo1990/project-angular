@@ -6,6 +6,7 @@ import { AppRoutingModule } from './config/app-routing.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //Servicios Providers
 import { UsuarioService } from './services/usuario-service.service'
@@ -32,7 +33,8 @@ import { AlertDialogComponent } from './components/dialog/alert-dialog/alert-dia
     ReactiveFormsModule,
     MaterialModule,
     MDBBootstrapModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent],

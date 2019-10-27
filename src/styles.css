@@ -84,9 +84,44 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
   color: rgb(6, 123, 173)!important;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.max-width-card-material {
+  width: auto;
+  margin: 0 auto;
+}
+
 .max-width-card {
   max-height: auto;
   overflow-y: auto;
+}
+
+@media (min-width: 1366px) {
+  .max-width-card-material {
+    width: 940px;
+  }
+
+  .max-width-card {
+    height: 561px;
+  }
 }
 
 @media (max-width: 1199px) {
@@ -107,10 +142,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
   }
 }
 
+@media (max-width: 576px) {
+  .max-width-card {
+    height: auto;
+  }
+
+  .card-ocultar{
+    display: none!important;
+  }
+}
+
 .mat-errors{
   color: #f44336;
   font-size: 75%;
   margin-top: 13px;
   position: absolute;
 }
-  

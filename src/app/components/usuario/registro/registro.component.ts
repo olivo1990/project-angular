@@ -7,6 +7,8 @@ import { UsuarioService } from '../../../services/usuario-service.service';
 import { VERSION, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { AlertDialogComponent } from '../../dialog//alert-dialog/alert-dialog.component';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { PoliticasPassword } from '../../../config/politicas-password';
+import { PoliticasPasswordModelo } from '../../../models/politicasPasswordModelo';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -33,10 +35,17 @@ export class RegistroComponent implements OnInit {
   validarError:boolean = false;
   validarPassword:boolean = false;
   mensajeErrorPassword:string;
+  politicasPassword:PoliticasPassword;
+  politicasPasswordModelo:PoliticasPasswordModelo[];
+
 
   constructor(private _snackBar: MatSnackBar,private router: Router,
-    private activatedRoute: ActivatedRoute,private usuarioService:UsuarioService, private dialog: MatDialog) { 
+    private activatedRoute: ActivatedRoute,private usuarioService:UsuarioService, private dialog: MatDialog) {
     this.usuario = new Usuario();
+    this.politicasPassword = new PoliticasPassword();
+    this.politicasPasswordModelo = this.politicasPassword.politicasPassword();
+
+    console.log(this.politicasPasswordModelo);
   }
 
   ngOnInit() {
@@ -61,11 +70,16 @@ export class RegistroComponent implements OnInit {
 
   verificarPasswordFormControl = new FormControl('', [
     Validators.required,
-  ]); 
+  ]);
 
   matcher = new MyErrorStateMatcher();
 
   registrar():void{
+
+    let titulo:string = "Error del servidor";
+    let mensaje:string = "Ocurrió un error inesperado!";
+
+    this.validarPassword = false;
 
     if(this.verificarPasswordValue !== this.usuario.password){
       console.log("ingresó");
@@ -76,7 +90,7 @@ export class RegistroComponent implements OnInit {
       return;
     }
 
-    if(this.nombreFormControl.hasError('required') || this.apellidoFormControl.hasError('required') || this.passwordFormControl.hasError('required') || this.verificarPasswordFormControl.hasError('required') || this.emailFormControl.hasError('required')){
+    if(this.nombreFormControl.hasError('required') || this.apellidoFormControl.hasError('required') || this.passwordFormControl.hasError('required') || this.verificarPasswordFormControl.hasError('required') || this.emailFormControl.hasError('required') || (this.emailFormControl.hasError('email') && !this.emailFormControl.hasError('required'))){
       return;
     }
 
@@ -85,29 +99,32 @@ export class RegistroComponent implements OnInit {
         usuario => {
           this.usuario = usuario;
           this.router.navigate(['/login/0']);
-          //this.router.navigate(['/clientes']);
+          titulo = "Muy bien!";
+          mensaje = "Al parecer ya eres uno de los nuestros";
+          this.openAlertDialog(titulo, mensaje, false);
           //swal('Nuevo cliente', `El cliente ${cliente.nombre} ha sido creado con éxito`, 'success');
         },
         err => {
           this.errores = err.error.errors as string[];
           console.error('Código del error desde el backend: ' + err.status);
           this.router.navigate(['/login/0']);
-          let titulo = "Error del servidor";
-          let mensaje = this.errores;
-          this.openAlertDialog(titulo, mensaje);
+          titulo = "Error del servidor";
+          mensaje = "Ocurrió un error inesperado!";
+          this.openAlertDialog(titulo, mensaje, true);
 
           //console.error(err.error.errors);
         }
     );
 
-  } 
+  }
 
-  openAlertDialog(titulo, mensaje) {
+  openAlertDialog(titulo:string, mensaje:string, error:boolean) {
     const dialogRef = this.dialog.open(AlertDialogComponent,{
       width: '300px',
       data:{
         title: titulo,
         message: mensaje,
+        error: error,
         buttonText: {
           cancel: 'Cerrar'
         }

@@ -1,20 +1,16 @@
-
-export interface PoliticasPasswordAtributos {
-    validacion: any;
-    mensaje: string;
-}
+import { PoliticasPasswordModelo } from '../models/politicasPasswordModelo';
 
 export class PoliticasPassword {
 
-    minCaracteres:number = 7;
-    maxCaracteres:number = 50;
-    minNumeros:number = 1;
-    minCaracteresEspeciales:number = 1;
-    minMayuscula:number = 1;
-    validarPasswordBand:boolean = true;
+    private minCaracteres:number = 7;
+    private maxCaracteres:number = 50;
+    private minNumeros:number = 1;
+    private minCaracteresEspeciales:number = 1;
+    private minMayuscula:number = 1;
+    private validarPasswordBand:boolean = true;
 
-    private arregloPoliticas:PoliticasPasswordAtributos[] =
-    [   
+    private arregloPoliticas:PoliticasPasswordModelo[] =
+    [
         {
             validacion: 1,
             mensaje: "No se permite que el password contenga espacios"
@@ -33,7 +29,7 @@ export class PoliticasPassword {
         }
     ];
 
-    politicasPassword():PoliticasPasswordAtributos[]{
+    politicasPassword():PoliticasPasswordModelo[]{
         return this.arregloPoliticas;
     }
 
@@ -53,18 +49,18 @@ export class PoliticasPassword {
                 }
                 break;
             case 3:
-            
+
                 break;
             case 4:
-        
+
                 break;
             case 5:
-        
+
                 break;
-        
+
             default:
                 break;
         }
-        
+
     }
 }

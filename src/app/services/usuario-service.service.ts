@@ -4,41 +4,42 @@ import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common
 import { map, catchError, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { UrlConfig } from '../config/url-config';
+import { URL_SERVICE } from '../config/config';
 
 
 @Injectable()
 export class UsuarioService {
 
   private usuario:Usuario;
+  private urlEndPoint = URL_SERVICE + '/api/usuarios';
 
-  urlObjeto:UrlConfig;
-
-  constructor(private http: HttpClient, private router: Router) { 
-    this.urlObjeto = new UrlConfig();
+  constructor(private http: HttpClient, private router: Router) {
   }
 
 
   /*registrar(usuario: Usuario): Usuario {
 
     this.usuario = usuario;
-    
+
     return this.usuario;
   }*/
 
   registrar(usuario: Usuario): Observable<Usuario> {
 
-    return this.http.post(this.urlObjeto.urlServices(), usuario, { })
+    return this.http.post(`${this.urlEndPoint}/registrar`, usuario, { })
       .pipe(
         map((response: any) => response.usuario as Usuario),
         catchError(e => {
+
+          console.log(e.status);
 
           if (e.status == 400) {
             return throwError(e);
           }
 
-          //console.error(e.error.mensaje);
-          //swal(e.error.mensaje, e.error.error, 'error');
+          if(e.error.mensaje){
+            console.log(e.error.mensaje);
+          }
           return throwError(e);
         })
       );

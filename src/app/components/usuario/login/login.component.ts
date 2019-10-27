@@ -18,7 +18,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
+
   titulo:string = "Iniciar sesión";
   usuario:Usuario;
   validarUsuario:boolean = false;
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   crearCuenta:boolean = false;
   ocultarOverlay:boolean = false;
 
-  constructor(private router:Router, private route:ActivatedRoute,) { 
+  constructor(private router:Router, private route:ActivatedRoute,) {
     this.usuario = new Usuario();
     //setTimeout(function(){ this.ocultarOverlay = true; }, 3000);
 

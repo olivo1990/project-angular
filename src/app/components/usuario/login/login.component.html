@@ -1,9 +1,9 @@
 <div class="container my-5 mx-auto">
     <div class="row">
         <!--<div class="col-md-12">-->
-        <mat-card class="p-0">
+        <mat-card class="p-0 max-width-card-material">
             <div class="card-group">
-                    
+
                 <!--</div>-->
 
                 <div class="card border-0 max-width-card">
@@ -11,7 +11,7 @@
                         <div class="col-md-10 offset-md-1 text-right">
                             <a [routerLink]="['/registrar']" class="color-light-link" (click)='crearCuenta=true'>Crear cuenta<mat-icon matPrefix class="position-icon">add</mat-icon></a>
                         </div>
-                        <div class="col-md-10 mx-auto my-5"> 
+                        <div class="col-md-10 mx-auto my-5">
 
                             <h1 class="mat-h2 text-left color-dark">{{ titulo }}</h1>
                             <form method="post">
@@ -34,7 +34,7 @@
                                         <mat-icon matPrefix class="rellenar color-dark" [ngStyle]="{'color':!passwordFormControl.hasError('required') ? '#f44236' : '#484848' }">lock</mat-icon>
                                         <input [(ngModel)]="usuario.password" [type]="hide ? 'password' : 'text'" name="password" id="password" matInput placeholder="Password" required [formControl]="passwordFormControl" [errorStateMatcher]="matcher">
                                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                            <mat-icon matSuffix class="color-dark">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> 
+                                            <mat-icon matSuffix class="color-dark">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                         </button>
                                         <mat-error *ngIf="passwordFormControl.hasError('required')">
                                             El password es <strong>requerido</strong>
@@ -54,7 +54,7 @@
                     </div>
                 </div>
 
-                <div class="card border-0">
+                <div class="card border-0 card-ocultar">
                 <!--<div class="col-md-8">-->
                     <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
                         <mdb-carousel-item>

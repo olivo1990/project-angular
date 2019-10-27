@@ -1,4 +1,9 @@
-<h1 mat-dialog-title>{{ title }}</h1>
+<h1 mat-dialog-title [ngClass]="{'text-success': !error, 'text-danger': error}" >
+  <mat-icon matPrefix class="text-success" style="position: relative;top: 5px;" *ngIf="!error" >check_circle</mat-icon>
+  <mat-icon matPrefix class="text-danger" style="position: relative;top: 5px;" *ngIf="error" >error</mat-icon>
+  {{ title }}
+</h1>
+
 <mat-dialog-content>
     <p>
         {{message}}
@@ -6,5 +11,5 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-    <button mat-button color="warn" [mat-dialog-close]="true">{{ cancelButtonText }}</button>
+    <button mat-button color="primary" [mat-dialog-close]="true">{{ cancelButtonText }}</button>
 </mat-dialog-actions>
