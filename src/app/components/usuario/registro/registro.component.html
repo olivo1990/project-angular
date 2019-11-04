@@ -51,10 +51,15 @@
 
                 <div class="card border-0 max-width-card">
                     <div class="card-body">
-                        <div class="col-md-10 offset-md-1 text-left">
+                        <div class="col-md-6 offset-md-1 text-left">
                             <a [routerLink]="['/login/0']" class="color-light-link" (click)='crearCuenta=true'><mat-icon matPrefix class="position-icon">navigate_before</mat-icon>Iniciar sesión</a>
                         </div>
-                        <div class="col-md-10 mx-auto my-5">
+
+                        <div class="col-md-4 offset-md-7 text-right" style="position: relative;bottom: 28px;">
+                          <img src="../../../../assets/imgs/logos/LogoColor_fondo_transparente3.png" alt="" style="width:90px">
+                        </div>
+
+                        <div class="col-md-10 mx-auto my-3">
 
                             <h1 class="mat-h2 text-left color-dark">{{ titulo }}</h1>
                             <form method="post">
