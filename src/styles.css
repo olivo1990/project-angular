@@ -114,7 +114,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
   overflow-y: auto;
 }
 
-@media (min-width: 1366px) {
+@media (max-width: 1366px) {
   .max-width-card-material {
     width: 940px;
   }
